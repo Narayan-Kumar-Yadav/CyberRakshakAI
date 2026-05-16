@@ -37,14 +37,8 @@ CyberRakshak AI analyzes suspicious domains, Telegram usernames, text messages, 
 
 ## 📸 Screenshots
 
-### Threat Analysis
-*(Add screenshot of /analyze command here)*
-
-### Telegram Username Analysis
-*(Add screenshot of /username command here)*
-
-### IOC History
-*(Add screenshot of /history command here)*
+### Threat Analysis | Telegram Username Analysis | IOC History
+* <img width="1536" height="1024" alt="test" src="https://github.com/user-attachments/assets/ba614db7-7bac-485b-a61d-717753795e84" />*
 
 ---
 
