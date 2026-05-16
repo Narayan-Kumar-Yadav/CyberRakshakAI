@@ -1,0 +1,2 @@
+"""Typed cybersecurity domain models."""
+

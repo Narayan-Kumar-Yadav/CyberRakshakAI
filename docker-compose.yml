@@ -1,0 +1,33 @@
+services:
+  bot:
+    build: .
+    env_file:
+      - .env
+    environment:
+      DATABASE_PATH: /data/cyberrakshak.sqlite3
+      REDIS_URL: redis://redis:6379/0
+      LOG_FORMAT: json
+      ENABLED_PROVIDERS: ${ENABLED_PROVIDERS:-virustotal,urlhaus,abuseipdb,urlscan}
+      PROVIDER_TIMEOUT_SECONDS: ${PROVIDER_TIMEOUT_SECONDS:-8}
+      URLSCAN_VISIBILITY: ${URLSCAN_VISIBILITY:-unlisted}
+      URLSCAN_POLL_ATTEMPTS: ${URLSCAN_POLL_ATTEMPTS:-2}
+      URLSCAN_POLL_DELAY_SECONDS: ${URLSCAN_POLL_DELAY_SECONDS:-2}
+      ENABLE_REDIS_METRICS: ${ENABLE_REDIS_METRICS:-true}
+      METRICS_TTL_SECONDS: ${METRICS_TTL_SECONDS:-86400}
+    depends_on:
+      redis:
+        condition: service_started
+    restart: unless-stopped
+    volumes:
+      - bot_data:/data
+
+  redis:
+    image: redis:7.2-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+
+volumes:
+  bot_data:
+  redis_data:

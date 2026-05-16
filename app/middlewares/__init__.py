@@ -1,0 +1,2 @@
+"""Aiogram middleware package."""
+
